@@ -25,7 +25,7 @@ defmodule PhoenixMetaTags.MixProject do
 
   defp deps do
     [
-      {:phoenix_html, "~> 2.10 or ~> 3.0 or ~> 4.1"},
+      {:phoenix_html_helpers, "~> 1.0"},
       {:plug, "~> 1.7"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
