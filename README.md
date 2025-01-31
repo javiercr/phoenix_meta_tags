@@ -16,7 +16,6 @@ From a struct like this:
 
 ```elixir
 %{
-    title: "Phoenix Title",
     description: "Phoenix Descriptions",
     url: "https://phoenix.meta.tags",
     image: "https://phoenix.meta.tags/logo.png"
@@ -27,8 +26,6 @@ will become:
 
 ```html
 # Default tags
-<title>Phoenix Title</title>
-<meta content="Phoenix Title" name="title">
 <meta content="Phoenix Descriptions" name="description">
 
 #Open Graph tags
@@ -53,7 +50,6 @@ Other key value of tags map will be rendered individually by key. Nested map wil
 
 ```elixir
 map = %{
-  title: "Phoenix Title",
   description: "Phoenix Descriptions",
   url: "https://phoenix.meta.tags",
   image: "https://phoenix.meta.tags/logo.png",
@@ -85,7 +81,6 @@ Instead of a nested map, you can also use a string-key map, this also delivers t
 
 ```elixir
 map = %{
-  "title" => "PhoenixTags",
   "fb:name" => "facebook",
   "fb:size:width" => 100,
   "fb:size:height" => 200,
@@ -93,27 +88,6 @@ map = %{
   "fb:size:position:y" => 15
 }
 
-```
-
-### Tag Value Override
-
-In default rendering, the **og:title** tag will get value from **title**. If you re-define **og:title** value, the new value will be override the default **title** value. For example:
-
-```elixir
-map = %{
-  title: "Phoenix Title",
-  og: %{
-    title: "Override"
-  }
-}
-```
-
-Will have output:
-
-```html
-<title>Phoenix Title</title>
-<meta content="Phoenix Title" name="title">
-<meta content="Override" property="og:title">
 ```
 
 ## Installation
@@ -162,7 +136,6 @@ Wherever you want to render meta tags, jut put it before render your view:
 ```elixir
 conn
 |> put_meta_tags(%{
-  title: "Phoenix Title",
   description: "Phoenix Descriptions",
   url: "https://phoenix.meta.tags",
   image: "https://phoenix.meta.tags/logo.png"
@@ -174,7 +147,6 @@ Or, use it as a plug:
 
 ```elixir
 @meta %{
-  title: "Phoenix Title",
   description: "Phoenix Descriptions",
   url: "https://phoenix.meta.tags",
   image: "https://phoenix.meta.tags/logo.png"
@@ -189,7 +161,6 @@ You can put the default value for meta tags in your config file. This config wil
 
 ```elixir
 config :phoenix_meta_tags,
-  title: "Phoenix Title Default",
   description: "Phoenix Descriptions Default",
   url: "https://phoenix.meta.tags.default",
   image: "https://phoenix.meta.tags.default/logo.png",

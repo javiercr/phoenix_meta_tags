@@ -5,7 +5,6 @@ defmodule MapHelerTest do
 
   test "test map helper" do
     map = %{
-      title: "PhoenixTags",
       fb: %{
         name: "facebook",
         size: %{
@@ -22,7 +21,6 @@ defmodule MapHelerTest do
     new_map = MapHelper.flatMap(map)
 
     expected_map = %{
-      "title" => "PhoenixTags",
       "fb:name" => "facebook",
       "fb:size:width" => 100,
       "fb:size:height" => 200,

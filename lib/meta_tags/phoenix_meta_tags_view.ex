@@ -17,7 +17,6 @@ defmodule PhoenixMetaTags.TagView do
       alias PhoenixMetaTags.MapHelper
 
       @default_tags [
-        "title",
         "description",
         "image",
         "url",
@@ -56,8 +55,6 @@ defmodule PhoenixMetaTags.TagView do
       """
       def render_tag_default(tags) do
         [
-          content_tag(:title, get_value(tags, "title")),
-          tag(:meta, content: get_value(tags, "title"), name: "title"),
           tag(:meta, content: get_value(tags, "description"), name: "description")
         ]
       end
@@ -69,7 +66,7 @@ defmodule PhoenixMetaTags.TagView do
         [
           tag(:meta, content: get_tags_value(tags, "og:type", "og:type"), property: "og:type"),
           tag(:meta, content: get_tags_value(tags, "url", "og:url"), property: "og:url"),
-          tag(:meta, content: get_tags_value(tags, "title", "og:title"), property: "og:title"),
+          tag(:meta, content: get_tags_value(tags, "og:title", "og:title"), property: "og:title"),
           tag(:meta,
             content: get_tags_value(tags, "description", "og:description"),
             property: "og:description"
@@ -89,7 +86,7 @@ defmodule PhoenixMetaTags.TagView do
           ),
           tag(:meta, content: get_tags_value(tags, "url", "twitter:url"), name: "twitter:url"),
           tag(:meta,
-            content: get_tags_value(tags, "title", "twitter:title"),
+            content: get_tags_value(tags, "twitter:title", "twitter:title"),
             name: "twitter:title"
           ),
           tag(:meta,
