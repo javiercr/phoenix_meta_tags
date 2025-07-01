@@ -111,6 +111,7 @@ defmodule PhoenixMetaTags.TagView do
         map
         |> Enum.map(fn
           {"twitter:" <> _ = k, v} -> tag(:meta, content: v, name: k)
+          {"robots" <> _ = k, v} -> tag(:meta, content: v, name: k)
           {k, v} -> tag(:meta, content: v, property: k)
         end)
       end
